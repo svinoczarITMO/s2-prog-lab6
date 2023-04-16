@@ -14,6 +14,7 @@ import java.util.*
  * @author svinoczar
  * @since 1.0.0
  */
+
 @Serializable
 data class Person(
     var id: Int,

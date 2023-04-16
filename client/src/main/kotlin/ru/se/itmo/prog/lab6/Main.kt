@@ -1,6 +1,7 @@
 import ru.itmo.se.prog.lab6.di.notKoinModule
 import org.koin.core.context.GlobalContext.startKoin
-import ru.itmo.se.prog.lab6.data.Messages
+import org.reflections.Reflections
+import ru.itmo.se.prog.lab6.data.*
 import ru.itmo.se.prog.lab6.utils.*
 
 fun main() {
@@ -24,7 +25,7 @@ fun main() {
         write.inConsole("> ")
         val readFromConsole = (readln().lowercase()).split(" ").toMutableList()
         readFromConsole.add(flag)
-        if (commandManager.getCommand("commands", readFromConsole[0], "Command") != null ){
+        if (commandManager.getCommand("ru.itmo.se.prog.lab6.commands", readFromConsole[0], "Command") != null ){
             val result = validator.validate(readFromConsole.toTypedArray())
             write.linesInConsole(result)
         } else {

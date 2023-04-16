@@ -32,7 +32,7 @@ class Add: Command() {
                                          "null parameter", "null parameter", "null parameter", "null parameter", "null parameter")
         var result: String? = ""
 
-        if (flag != "ru.itmo.se.prog.lab6.main") {
+        if (flag != "main") {
             params = parametersParser(path)
         }
 

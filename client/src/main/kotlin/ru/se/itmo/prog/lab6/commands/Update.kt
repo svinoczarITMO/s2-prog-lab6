@@ -39,7 +39,7 @@ class Update: Command() {
         tmpMap["path"] = path
         tmpMap["elementId"] = elementId
 
-        if (flag != "ru.itmo.se.prog.lab6.main") {
+        if (flag != "main") {
             params = parametersParser(tmpMap)
         }
 

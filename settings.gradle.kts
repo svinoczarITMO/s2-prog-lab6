@@ -1,4 +1,3 @@
-
 rootProject.name = "s2-prog-lab6"
 
 

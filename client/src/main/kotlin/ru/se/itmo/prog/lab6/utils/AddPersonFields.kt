@@ -23,7 +23,7 @@ class AddPersonFields: KoinComponent {
      * @return name as String
      */
     fun name (arg: String?, flag: String): String {
-        val name: String = if (flag == "ru.itmo.se.prog.lab6.main") {
+        val name: String = if (flag == "main") {
             write.linesInConsole(message.getMessage("enter_name"))
             read.fromConsole()
         } else {
@@ -45,7 +45,7 @@ class AddPersonFields: KoinComponent {
      * @return Float
      */
     fun coordinateX (arg: String?, flag: String): Float {
-        val coordinateX: String = if (flag == "ru.itmo.se.prog.lab6.main") {
+        val coordinateX: String = if (flag == "main") {
             write.linesInConsole(message.getMessage("enter_coordinateX"))
             read.fromConsole()
         } else {
@@ -56,14 +56,14 @@ class AddPersonFields: KoinComponent {
                 return coordinateX.toFloat()
             } else {
                 write.linesInConsole("Координата \"x\" должна быть не больше 214!")
-                if (flag == "ru.itmo.se.prog.lab6.main") {
+                if (flag == "main") {
                     return coordinateX(arg, flag)
                 } else {return coordinateX as Float}
             }
         } catch (e: NumberFormatException) {
             write.linesInConsole(message.getMessage("NumberFormatException"))
         }
-        if (flag == "ru.itmo.se.prog.lab6.main") {
+        if (flag == "main") {
             return coordinateX(arg, flag)
         } else {return coordinateX as Float}
     }
@@ -74,7 +74,7 @@ class AddPersonFields: KoinComponent {
      * @return Float
      */
     fun coordinateY (arg: String?, flag: String): Float {
-        val coordinateY: String = if (flag == "ru.itmo.se.prog.lab6.main") {
+        val coordinateY: String = if (flag == "main") {
             write.linesInConsole(message.getMessage("enter_coordinateY"))
             read.fromConsole()
         } else {
@@ -85,14 +85,14 @@ class AddPersonFields: KoinComponent {
                 return coordinateY.toFloat()
             } else {
                 write.linesInConsole("Координата \"y\" должна быть не больше 794!")
-                if (flag == "ru.itmo.se.prog.lab6.main") {
+                if (flag == "main") {
                     return coordinateX(arg, flag)
                 } else {return coordinateY as Float}
             }
         } catch (e: NumberFormatException) {
             write.linesInConsole(message.getMessage("NumberFormatException"))
         }
-        if (flag == "ru.itmo.se.prog.lab6.main") {
+        if (flag == "main") {
             return coordinateX(arg, flag)
         } else {return coordinateY as Float}
     }
@@ -103,7 +103,7 @@ class AddPersonFields: KoinComponent {
      * @return Int
      */
     fun height (arg: String?, flag: String): Int {
-        val height: String = if (flag == "ru.itmo.se.prog.lab6.main") {
+        val height: String = if (flag == "main") {
             write.linesInConsole(message.getMessage("enter_height"))
             read.fromConsole()
         } else {
@@ -114,14 +114,14 @@ class AddPersonFields: KoinComponent {
                 return height.toInt()
             } else {
                 write.linesInConsole("Рост должен быть больше нуля!")
-                if (flag == "ru.itmo.se.prog.lab6.main") {
+                if (flag == "main") {
                     return height(arg, flag)
                 } else {return height as Int}
             }
         } catch (e: NumberFormatException) {
             write.linesInConsole(message.getMessage("NumberFormatException"))
         }
-        if (flag == "ru.itmo.se.prog.lab6.main") {
+        if (flag == "main") {
             return height(arg, flag)
         } else {return height as Int}
     }
@@ -132,7 +132,7 @@ class AddPersonFields: KoinComponent {
      * @return Long
      */
     fun weight (arg: String?, flag: String): Long {
-        val weight: String = if (flag == "ru.itmo.se.prog.lab6.main") {
+        val weight: String = if (flag == "main") {
             write.linesInConsole(message.getMessage("enter_weight"))
             read.fromConsole()
         } else {
@@ -143,14 +143,14 @@ class AddPersonFields: KoinComponent {
                 return weight.toLong()
             } else {
                 write.linesInConsole("Вес должен быть больше нуля!")
-                if (flag == "ru.itmo.se.prog.lab6.main") {
+                if (flag == "main") {
                     return weight(arg, flag)
                 } else {return weight as Long}
             }
         } catch (e: NumberFormatException) {
             write.linesInConsole(message.getMessage("NumberFormatException"))
         }
-        if (flag == "ru.itmo.se.prog.lab6.main") {
+        if (flag == "main") {
             return weight(arg, flag)
         } else {return weight as Long}
     }
@@ -161,7 +161,7 @@ class AddPersonFields: KoinComponent {
      * @return Color
      */
     fun hairColor (arg: String?, flag: String): Color {
-        val hairColor: String = if (flag == "ru.itmo.se.prog.lab6.main") {
+        val hairColor: String = if (flag == "main") {
             write.linesInConsole(message.getMessage("enter_hairColor"))
             for (value in 0 until Color.values().size) {
                 write.inConsole("${Color.values()[value]}")
@@ -179,7 +179,7 @@ class AddPersonFields: KoinComponent {
         } catch (e: IllegalArgumentException) {
             write.linesInConsole(message.getMessage("IllegalColor"))
         }
-        if (flag == "ru.itmo.se.prog.lab6.main") {
+        if (flag == "main") {
             return hairColor(arg, flag)
         } else {return hairColor as Color
         }
@@ -193,7 +193,7 @@ class AddPersonFields: KoinComponent {
     fun nationality (arg: String?, flag: String): Country {
 
         write.linesInConsole("")
-        val nationality: String = if (flag == "ru.itmo.se.prog.lab6.main") {
+        val nationality: String = if (flag == "main") {
             write.linesInConsole(message.getMessage("enter_nationality"))
             for (value in 0 until Country.values().size) {
                 write.inConsole("${Country.values()[value]}")
@@ -211,7 +211,7 @@ class AddPersonFields: KoinComponent {
         } catch (e: IllegalArgumentException) {
             write.linesInConsole(message.getMessage("IllegalCountry"))
         }
-        if (flag == "ru.itmo.se.prog.lab6.main") {
+        if (flag == "main") {
             return nationality(arg, flag)
         } else {return nationality as Country
         }
@@ -223,7 +223,7 @@ class AddPersonFields: KoinComponent {
      * @return Int
      */
     fun locationX (arg: String?, flag: String): Int {
-        val locationX: String = if (flag == "ru.itmo.se.prog.lab6.main") {
+        val locationX: String = if (flag == "main") {
             write.linesInConsole(message.getMessage("enter_locationX"))
             read.fromConsole()
         } else {
@@ -234,7 +234,7 @@ class AddPersonFields: KoinComponent {
         } catch (e: NumberFormatException) {
             write.linesInConsole(message.getMessage("NumberFormatException"))
         }
-        if (flag == "ru.itmo.se.prog.lab6.main") {
+        if (flag == "main") {
             return locationX(arg, flag)
         } else {return locationX as Int}
     }
@@ -245,7 +245,7 @@ class AddPersonFields: KoinComponent {
      * @return Long
      */
     fun locationY (arg: String?, flag: String): Long? {
-        val locationY: String = if (flag == "ru.itmo.se.prog.lab6.main") {
+        val locationY: String = if (flag == "main") {
             write.linesInConsole(message.getMessage("enter_locationY"))
             read.fromConsole()
         } else {
@@ -256,7 +256,7 @@ class AddPersonFields: KoinComponent {
         } catch (e: NumberFormatException) {
             write.linesInConsole(message.getMessage("NumberFormatException"))
         }
-        if (flag == "ru.itmo.se.prog.lab6.main") {
+        if (flag == "main") {
             return locationY(arg, flag)
         } else {return locationY as Long}
     }
@@ -267,7 +267,7 @@ class AddPersonFields: KoinComponent {
      * @return Int
      */
     fun locationZ (arg: String?, flag: String): Int {
-        val locationZ: String = if (flag == "ru.itmo.se.prog.lab6.main") {
+        val locationZ: String = if (flag == "main") {
             write.linesInConsole(message.getMessage("enter_locationZ"))
             read.fromConsole()
         } else {
@@ -278,7 +278,7 @@ class AddPersonFields: KoinComponent {
         } catch (e: NumberFormatException) {
             write.linesInConsole(message.getMessage("NumberFormatException"))
         }
-        if (flag == "ru.itmo.se.prog.lab6.main") {
+        if (flag == "main") {
             return locationZ(arg, flag)
         } else {return locationZ as Int}
     }
