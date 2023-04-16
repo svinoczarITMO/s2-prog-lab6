@@ -1,0 +1,14 @@
+update 2
+K
+0.01
+11.11
+130
+22
+brown
+usa
+90
+45
+75
+show
+update 4
+execute_script 2.txt
