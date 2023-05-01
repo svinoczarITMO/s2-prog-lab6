@@ -1,6 +1,7 @@
-package ru.itmo.se.prog.lab6.commands
+package ru.se.itmo.prog.lab6.commands
 
-import ru.itmo.se.prog.lab6.data.Person
+import ru.se.itmo.prog.lab6.commands.Command
+import ru.se.itmo.prog.lab6.data.Person
 import java.util.*
 
 /**
@@ -27,7 +28,7 @@ class Save: Command() {
         val collection = Vector<Person>()
         collection.addAll(collectionManager.collection)
         val list = collectionManager.collectionToList()
-        val jsonString = serializer.serialize(list)
+        val jsonString = serializer.serializeCollection(list)
         write.toFile(jsonString, pathToFile)
         result = (message.getMessage("saved"))
         return result

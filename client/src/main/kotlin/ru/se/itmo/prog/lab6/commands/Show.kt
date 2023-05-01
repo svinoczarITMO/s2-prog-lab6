@@ -1,4 +1,4 @@
-package ru.itmo.se.prog.lab6.commands
+package ru.se.itmo.prog.lab6.commands
 
 /**
  * Outputs "id-name" pairs of items in the collection.

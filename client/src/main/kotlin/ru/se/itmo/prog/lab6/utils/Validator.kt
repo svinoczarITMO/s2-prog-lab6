@@ -1,6 +1,6 @@
 package ru.itmo.se.prog.lab6.utils
 
-import ru.itmo.se.prog.lab6.commands.Command
+import ru.se.itmo.prog.lab6.commands.Command
 import ru.itmo.se.prog.lab6.data.Color
 import ru.itmo.se.prog.lab6.data.Messages
 import org.koin.core.component.KoinComponent

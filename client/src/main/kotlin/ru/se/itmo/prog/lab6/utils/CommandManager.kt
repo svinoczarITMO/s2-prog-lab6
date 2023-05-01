@@ -1,6 +1,6 @@
 package ru.itmo.se.prog.lab6.utils
 
-import ru.itmo.se.prog.lab6.commands.Command
+import ru.se.itmo.prog.lab6.commands.Command
 import ru.itmo.se.prog.lab6.data.Messages
 import ru.itmo.se.prog.lab6.exceptions.CommandException
 import org.koin.core.component.KoinComponent
@@ -27,7 +27,6 @@ class CommandManager: KoinComponent {
          */
         fun parsePackage(packageName: String, commandInterfaceName: String): Set<Class<*>> {
                 val reflections = Reflections(packageName, SubTypesScanner(false))
-
                 return reflections.getSubTypesOf(Object::class.java)
                         .filter { klass -> !klass.simpleName.equals(commandInterfaceName) }
                         .toSet()

@@ -1,8 +1,8 @@
-package ru.itmo.se.prog.lab6.commands
+package ru.se.itmo.prog.lab6.commands
 
 import ru.itmo.se.prog.lab6.data.Coordinates
 import ru.itmo.se.prog.lab6.data.Location
-import ru.itmo.se.prog.lab6.data.Person
+import ru.se.itmo.prog.lab6.data.Person
 import org.jetbrains.kotlin.konan.file.File
 import ru.itmo.se.prog.lab6.utils.AddPersonFields
 import ru.itmo.se.prog.lab6.utils.PrinterManager

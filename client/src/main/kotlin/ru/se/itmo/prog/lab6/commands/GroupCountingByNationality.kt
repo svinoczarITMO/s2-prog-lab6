@@ -1,7 +1,8 @@
-package ru.itmo.se.prog.lab6.commands
+package ru.se.itmo.prog.lab6.commands
 
 import ru.itmo.se.prog.lab6.data.Country
-import ru.itmo.se.prog.lab6.data.Person
+import ru.se.itmo.prog.lab6.commands.Command
+import ru.se.itmo.prog.lab6.data.Person
 import java.util.*
 
 /**

@@ -1,4 +1,4 @@
-package ru.itmo.se.prog.lab6.commands
+package ru.se.itmo.prog.lab6.commands
 
 /**
  * Deletes the collection item with the entered identifier.

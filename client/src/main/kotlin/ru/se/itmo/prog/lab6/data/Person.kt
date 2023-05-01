@@ -1,7 +1,11 @@
-package ru.itmo.se.prog.lab6.data
+package ru.se.itmo.prog.lab6.data
 
 import kotlinx.serialization.Contextual
 import kotlinx.serialization.Serializable
+import ru.itmo.se.prog.lab6.data.Color
+import ru.itmo.se.prog.lab6.data.Coordinates
+import ru.itmo.se.prog.lab6.data.Country
+import ru.itmo.se.prog.lab6.data.Location
 import ru.itmo.se.prog.lab6.utils.DateAsStringSerializer
 import java.util.*
 

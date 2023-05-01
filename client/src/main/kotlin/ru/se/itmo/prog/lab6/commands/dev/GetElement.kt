@@ -1,7 +1,7 @@
-package ru.itmo.se.prog.lab6.commands.dev
+package ru.se.itmo.prog.lab6.commands.dev
 
-import ru.itmo.se.prog.lab6.commands.Command
-import ru.itmo.se.prog.lab6.data.Person
+import ru.se.itmo.prog.lab6.commands.Command
+import ru.se.itmo.prog.lab6.data.Person
 
 /**
  * Gets the collection item by its identifier.

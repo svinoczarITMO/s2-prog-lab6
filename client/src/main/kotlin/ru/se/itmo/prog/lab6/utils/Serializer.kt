@@ -1,6 +1,6 @@
 package ru.itmo.se.prog.lab6.utils
 
-import ru.itmo.se.prog.lab6.data.Person
+import ru.se.itmo.prog.lab6.data.Person
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.descriptors.PrimitiveKind
@@ -23,14 +23,14 @@ class Serializer {
     /**
      * Serializes the list of Person objects.
      */
-    fun serialize(whatToSerialize: List<Person>): String {
+    fun serializeCollection(whatToSerialize: List<Person>): String {
         return Json.encodeToString(whatToSerialize)
     }
 
     /**
      * Deserializes the list of Person objects.
      */
-    fun deserialize(whatToDeserialize: String): List<Person> {
+    fun deserializeCollection(whatToDeserialize: String): List<Person> {
         return Json.decodeFromString<List<Person>>(whatToDeserialize)
     }
 }

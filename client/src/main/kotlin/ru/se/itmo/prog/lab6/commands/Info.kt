@@ -1,6 +1,7 @@
-package ru.itmo.se.prog.lab6.commands
+package ru.se.itmo.prog.lab6.commands
 
 import ru.itmo.se.prog.lab6.utils.Logger
+import ru.se.itmo.prog.lab6.commands.Command
 
 /**
  * Outputs information about the collection.

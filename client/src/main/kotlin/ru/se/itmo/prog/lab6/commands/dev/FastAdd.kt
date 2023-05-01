@@ -1,7 +1,8 @@
-package ru.itmo.se.prog.lab6.commands.dev
+package ru.se.itmo.prog.lab6.commands.dev
 
-import ru.itmo.se.prog.lab6.commands.Command
+import ru.se.itmo.prog.lab6.commands.Command
 import ru.itmo.se.prog.lab6.data.*
+import ru.se.itmo.prog.lab6.data.Person
 
 /**
  * Adds new element to the collection with no input arguments.

@@ -1,6 +1,7 @@
 package ru.itmo.se.prog.lab6.commands
 
 import ru.itmo.se.prog.lab6.utils.Logger
+import java.io.PrintWriter
 
 /**
  * Outputs information about the collection.
@@ -20,6 +21,7 @@ class Info: Command() {
     }
 
     override fun execute(args: Map<String, Any?>): String? {
+        val output = PrintWriter()
         var result: String? = ""
         val type = collectionManager.getType() //Работает некорректно с пустой коллекций (Выводит "Тип: ArrayList")
         val size = collectionManager.collection.size
