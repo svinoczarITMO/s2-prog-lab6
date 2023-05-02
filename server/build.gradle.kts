@@ -11,6 +11,7 @@ group = "ru.itmo.se.prog.lab6"
 version = "1.0-SNAPSHOT"
 
 dependencies {
+    implementation(project(mapOf("path" to ":common")))
     val koinVersion = "3.2.2"
     testImplementation(kotlin("test"))
     testImplementation("org.junit.jupiter:junit-jupiter:5.9.2")

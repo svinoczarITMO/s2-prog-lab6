@@ -6,15 +6,13 @@ import java.net.InetSocketAddress
 import java.net.Socket
 import java.nio.channels.ServerSocketChannel
 import java.nio.channels.SocketChannel
-import ru.itmo.se.prog.lab6.data.Person
-import ru.itmo.se.prog.lab6.utils.Response
+import ru.se.itmo.prog.lab6.utils.ResultModule
 import java.io.BufferedReader
 import java.io.InputStreamReader
 import java.io.ObjectInputStream
 import java.io.ObjectOutputStream
 import java.util.logging.Level
 import java.util.logging.Logger
-import kotlin.math.log
 
 
 class ServerApp() : KoinComponent {
@@ -47,7 +45,7 @@ class ServerApp() : KoinComponent {
         logger.log(Level.SEVERE, "Обработка запроса...")
         try {
             val objectInputStream = ObjectInputStream(clientSocketChannel.socket().getInputStream())
-            val obj = objectInputStream.readObject()
+            val result = objectInputStream.readObject() as ResultModule
         } catch (e: Exception) {
             logger.log(Level.SEVERE, "Ошибка обработки запроса.")
         }
