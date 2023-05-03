@@ -26,7 +26,7 @@ class Validator: KoinComponent{
      * @param args unchecked raw arguments.
      * @param collectionManager instance of Collection Manager.
      */
-    fun validate (args: Array<Any?>): String {
+    fun validate (args: Array<Any>): String {
         val commandName = args[0] as String
         val mapOfArgs = mutableMapOf<String, Any?>()
         val arguments = args.slice(1 until args.size)
@@ -56,7 +56,7 @@ class Validator: KoinComponent{
         }
         // Проверка количества аргументов для комманд с 0 аргументов и для add.
         if (commandName in noArgs || commandName in newObj){
-            if (args[1] != "ru.itmo.se.prog.lab6.main" && args[1] != "execute"){
+            if (args[1] != "main" && args[1] != "execute"){
                 write.linesInConsole(message.getMessage("InvalidArgument"))
                 return ""
             }

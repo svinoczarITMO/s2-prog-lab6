@@ -33,6 +33,20 @@ class Serializer {
     fun deserializeCollection(whatToDeserialize: String): List<Person> {
         return Json.decodeFromString<List<Person>>(whatToDeserialize)
     }
+
+    /**
+     *
+     */
+    fun serializeString(whatToSerialize: MutableList<String>): String {
+        return Json.encodeToString(whatToSerialize)
+    }
+
+    /**
+     *
+     */
+    fun deserializeString(whatToDeserialize: String): List<String> {
+        return Json.decodeFromString<List<String>>(whatToDeserialize)
+    }
 }
 
 object DateAsStringSerializer : KSerializer<Date> {

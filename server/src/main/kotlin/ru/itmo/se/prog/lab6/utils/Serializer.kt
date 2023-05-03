@@ -1,6 +1,5 @@
 package ru.itmo.se.prog.lab6.utils
 
-import ru.itmo.se.prog.lab6.data.Person
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.descriptors.PrimitiveKind
@@ -10,6 +9,7 @@ import kotlinx.serialization.encodeToString
 import kotlinx.serialization.encoding.Decoder
 import kotlinx.serialization.encoding.Encoder
 import kotlinx.serialization.json.Json
+import ru.itmo.se.prog.lab6.data.Person
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -23,15 +23,29 @@ class Serializer {
     /**
      * Serializes the list of Person objects.
      */
-    fun serialize(whatToSerialize: List<Person>): String {
+    fun serializeCollection(whatToSerialize: List<Person>): String {
         return Json.encodeToString(whatToSerialize)
     }
 
     /**
      * Deserializes the list of Person objects.
      */
-    fun deserialize(whatToDeserialize: String): List<Person> {
+    fun deserializeCollection(whatToDeserialize: String): List<Person> {
         return Json.decodeFromString<List<Person>>(whatToDeserialize)
+    }
+
+    /**
+     *
+     */
+    fun serializeString(whatToSerialize: MutableList<String>): String {
+        return Json.encodeToString(whatToSerialize)
+    }
+
+    /**
+     *
+     */
+    fun deserializeString(whatToDeserialize: String): List<String> {
+        return Json.decodeFromString<List<String>>(whatToDeserialize)
     }
 }
 

@@ -27,7 +27,7 @@ class Save: Command() {
         val collection = Vector<Person>()
         collection.addAll(collectionManager.collection)
         val list = collectionManager.collectionToList()
-        val jsonString = serializer.serialize(list)
+        val jsonString = serializer.serializeCollection(list)
         write.toFile(jsonString, pathToFile)
         result = (message.getMessage("saved"))
         return result
