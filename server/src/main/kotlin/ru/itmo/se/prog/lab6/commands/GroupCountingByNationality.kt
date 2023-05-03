@@ -35,7 +35,7 @@ class GroupCountingByNationality: Command() {
                     counterOfElementsInGroup += 1
                 }
             }
-            result = ("В группе $nationality $counterOfElementsInGroup человек")
+            result += ("В группе $nationality $counterOfElementsInGroup человек\n")
         }
         collectionManager.collection = bufferVector
         return result

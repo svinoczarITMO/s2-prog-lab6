@@ -10,7 +10,7 @@ import java.util.*
  * @since 1.0.0
  */
 class Save: Command() {
-    private val pathToFile = System.getenv("COLLECTION_VAR")
+    private val pathToFile = System.getenv("SERVER_COLLECTION_VAR")
     override fun getName(): String {
         return "save"
     }

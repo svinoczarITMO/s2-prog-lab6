@@ -43,7 +43,6 @@ class CommandManager: KoinComponent {
          */
         fun getCommand(packageName: String, commandName: String, commandInterfaceName: String): Command? {
                 val classes = parsePackage(packageName, commandInterfaceName)
-
                 for (klass in classes) {
                         try {
                                 val command = klass.getConstructor().newInstance() as Command

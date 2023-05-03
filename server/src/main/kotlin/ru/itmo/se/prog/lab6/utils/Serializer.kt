@@ -37,14 +37,14 @@ class Serializer {
     /**
      *
      */
-    fun serializeString(whatToSerialize: MutableList<String>): String {
+    fun serializeList(whatToSerialize: MutableList<String>): String {
         return Json.encodeToString(whatToSerialize)
     }
 
     /**
      *
      */
-    fun deserializeString(whatToDeserialize: String): List<String> {
+    fun deserializeList(whatToDeserialize: String): List<String> {
         return Json.decodeFromString<List<String>>(whatToDeserialize)
     }
 }

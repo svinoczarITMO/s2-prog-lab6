@@ -18,7 +18,7 @@ class Help: Command() {
     override fun execute(args: Map<String, Any?>): String? {
         var result: String? = ""
         result = (message.getMessage("="))
-        val classes = commandManager.parsePackage("ru/itmo/se/prog/lab6/commandsse/prog/lab6/commands", "Command")
+        val classes = commandManager.parsePackage("ru.itmo.se.prog.lab6.commands", "Command")
             .filter { klass -> !klass.simpleName.equals("FastAdd") && !klass.simpleName.equals("PrintCollection") && !klass.simpleName.equals("GetElement") }
         for (klass in classes) {
             try {

@@ -12,7 +12,7 @@ import java.io.File
  * @since 1.0.0
  */
 class Loader: KoinComponent {
-    private val pathToFile = System.getenv("COLLECTION_VAR")
+    private val pathToFile = System.getenv("SERVER_COLLECTION_VAR")
     private val collectionManager: CollectionManager by inject()
     private val serializer: Serializer by inject()
 

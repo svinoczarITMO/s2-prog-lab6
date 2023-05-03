@@ -2,7 +2,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     kotlin("jvm") version "1.8.0"
-    kotlin("plugin.serialization") version "1.5.0"
+    id("org.jetbrains.kotlin.plugin.serialization") version "1.8.10"
     application
 }
 
@@ -12,6 +12,7 @@ group = "ru.itmo.se.prog.lab6"
 version = "1.0-SNAPSHOT"
 
 dependencies {
+    val kotlinVersion = "1.8.10"
     val koinVersion = "3.2.2"
     testImplementation(kotlin("test"))
     implementation ("io.github.microutils:kotlin-logging-jvm:2.0.11")
@@ -19,7 +20,7 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-reflect:1.8.10")
     implementation("org.reflections:reflections:0.10.2")
     implementation(kotlin("serialization", version = kotlinVersion))
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.0-RC")
     implementation("io.insert-koin:koin-core:$koinVersion")
     implementation ("ch.qos.logback:logback-classic:1.2.9")
     implementation("ch.qos.logback:logback-classic:1.2.9")

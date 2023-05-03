@@ -10,7 +10,7 @@ import java.util.*
  * @since 1.0.0
  */
 class Logger {
-    private val pathToFile = "D:\\ITMO\\2nd-semester\\prog-labs\\s2-prog-lab5\\src\\ru.itmo.se.prog.lab6.main\\kotlin\\data\\data.log"
+    private val pathToFile = "D:\\ITMO\\2nd-semester\\prog-labs\\s2-prog-lab6\\server\\src\\main\\kotlin\\ru\\itmo\\se\\prog\\lab6\\data\\data.log"
 
     /**
      * Saves initialization date to data.log file or returns initialization date from data.log file as String.

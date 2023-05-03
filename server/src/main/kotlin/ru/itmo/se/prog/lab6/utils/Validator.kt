@@ -24,7 +24,6 @@ class Validator: KoinComponent{
      * Validates what is command's type and arguments and starts command.
      *
      * @param args unchecked raw arguments.
-     * @param collectionManager instance of Collection Manager.
      */
     fun validate (args: Array<Any>): String {
         val commandName = args[0] as String
@@ -89,7 +88,7 @@ class Validator: KoinComponent{
                     val name = oneArgCommands[commandName]
                     mapOfArgs["$name"] = extraValidation(name!!, arguments)
                     if (commandName == "execute_script"){
-                        if (arguments[1] == "ru.itmo.se.prog.lab6.main"){
+                        if (arguments[1] == "main"){
                             mapOfArgs["depth"] = 0
                         } else {
                             mapOfArgs["depth"] = arguments[3].toString().toInt()
@@ -98,12 +97,12 @@ class Validator: KoinComponent{
                 }
                 in newObj -> {
                     mapOfArgs["flag"] = arguments[0]
-                    mapOfArgs["path"] = if (arguments[0] != "ru.itmo.se.prog.lab6.main") arguments[1] else ""
+                    mapOfArgs["path"] = if (arguments[0] != "main") arguments[1] else ""
                 }
                 in argAndObj -> {
                     mapOfArgs["elementId"] = arguments[0].toString().toInt()
                     mapOfArgs["flag"] = arguments[1]
-                    mapOfArgs["path"] = if (arguments[1] != "ru.itmo.se.prog.lab6.main") arguments[2] else ""
+                    mapOfArgs["path"] = if (arguments[1] != "main") arguments[2] else ""
                 }
             }
         } catch (e: NumberFormatException) {
@@ -111,7 +110,7 @@ class Validator: KoinComponent{
             return ""
         }
 
-        val command = commandManager.getCommand("ru/itmo/se/prog/lab6/commandsse/prog/lab6/commands", commandName, "Command")
+        val command = commandManager.getCommand("ru.itmo.se.prog.lab6.commands", commandName, "Command")
         val result = execute(command, mapOfArgs)
         return result.toString()
     }

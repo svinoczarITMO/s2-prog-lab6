@@ -8,7 +8,6 @@ import java.io.*
 import java.net.InetSocketAddress
 import java.nio.channels.ServerSocketChannel
 import java.nio.channels.SocketChannel
-import java.nio.charset.StandardCharsets
 import java.util.logging.Logger
 
 
@@ -45,8 +44,7 @@ class ServerApp() : KoinComponent {
             val bufferedReader = BufferedReader(InputStreamReader(input))
             val str_in = bufferedReader.readLine()?.trim()!!
 
-            val deserializabledInput: Array<Any> = serializer.deserializeString(str_in).toTypedArray()
-            deserializabledInput.forEach { println(it) }
+            val deserializabledInput: Array<Any> = serializer.deserializeList(str_in).toTypedArray()
             val result = validator.validate(deserializabledInput)
             response(clientSocketChannel, result)
         } catch (e: Exception) {

@@ -1,7 +1,8 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    kotlin("jvm") version "1.8.0"
+    kotlin("jvm") version "1.8.10"
+    id("org.jetbrains.kotlin.plugin.serialization") version "1.8.10"
     application
 }
 
@@ -10,15 +11,20 @@ val kotlinVersion = "1.8.0"
 group = "ru.itmo.se.prog.lab6"
 version = "1.0-SNAPSHOT"
 
+repositories {
+    mavenCentral()
+}
+
 dependencies {
-    implementation(project(mapOf("path" to ":common")))
+    val kotlinVersion = "1.8.10"
+//    implementation(project(mapOf("path" to ":common")))
     val koinVersion = "3.2.2"
     testImplementation(kotlin("test"))
     testImplementation("org.junit.jupiter:junit-jupiter:5.9.2")
     implementation("org.jetbrains.kotlin:kotlin-reflect:1.8.10")
     implementation("org.reflections:reflections:0.10.2")
     implementation(kotlin("serialization", version = kotlinVersion))
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.0-RC")
     implementation("io.insert-koin:koin-core:$koinVersion")
     implementation ("ch.qos.logback:logback-classic:1.2.9")
 //    implementation("log4j:log4j:1.2.17")
