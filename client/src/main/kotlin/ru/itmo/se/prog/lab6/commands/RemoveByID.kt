@@ -1,12 +1,17 @@
 package ru.itmo.se.prog.lab6.commands
 
+
+import ru.itmo.se.prog.lab6.data.types.ArgType
+import ru.itmo.se.prog.lab6.data.types.LocationType
+import ru.itmo.se.prog.lab6.data.types.StatusType
+
 /**
  * Deletes the collection item with the entered identifier.
  *
  * @author svinoczar
  * @since 1.0.0
  */
-class RemoveByID: Command() {
+class RemoveByID: Command(ArgType.ONE_ARG, StatusType.USER, LocationType.SERVER) {
     override fun getName(): String {
         return "remove_by_id"
     }

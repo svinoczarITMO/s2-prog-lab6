@@ -1,6 +1,10 @@
 package ru.itmo.se.prog.lab6.commands
 
+
 import org.jetbrains.kotlin.konan.file.File
+import ru.itmo.se.prog.lab6.data.types.ArgType
+import ru.itmo.se.prog.lab6.data.types.LocationType
+import ru.itmo.se.prog.lab6.data.types.StatusType
 
 /**
  * Executes the script according to the file path entered.
@@ -8,7 +12,7 @@ import org.jetbrains.kotlin.konan.file.File
  * @author svinoczar
  * @since 1.0.0
  */
-class ExecuteScript: Command() {
+class ExecuteScript: Command(ArgType.ONE_ARG, StatusType.USER, LocationType.SERVER) {
     private var scriptFile = File("")
 
     override fun getName(): String {

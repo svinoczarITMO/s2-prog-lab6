@@ -1,6 +1,9 @@
 package ru.itmo.se.prog.lab6.commands
 
 import ru.itmo.se.prog.lab6.data.Person
+import ru.itmo.se.prog.lab6.data.types.ArgType
+import ru.itmo.se.prog.lab6.data.types.LocationType
+import ru.itmo.se.prog.lab6.data.types.StatusType
 import java.util.*
 
 /**
@@ -9,7 +12,7 @@ import java.util.*
  * @author svinoczar
  * @since 1.0.0
  */
-class Save: Command() {
+class Save: Command(ArgType.NO_ARG, StatusType.ADMIN, LocationType.SERVER) {
     private val pathToFile = System.getenv("SERVER_COLLECTION_VAR")
     override fun getName(): String {
         return "save"

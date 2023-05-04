@@ -1,8 +1,11 @@
 package ru.itmo.se.prog.lab6.commands.dev
 
+
 import ru.itmo.se.prog.lab6.commands.Command
 import ru.itmo.se.prog.lab6.data.Person
-
+import ru.itmo.se.prog.lab6.data.types.ArgType
+import ru.itmo.se.prog.lab6.data.types.LocationType
+import ru.itmo.se.prog.lab6.data.types.StatusType
 
 /**
  * Gets the collection item by its identifier.
@@ -10,7 +13,7 @@ import ru.itmo.se.prog.lab6.data.Person
  * @author svinoczar
  * @since 1.0.0
  */
-class GetElement: Command() {
+class GetElement: Command(ArgType.ONE_ARG, StatusType.ADMIN, LocationType.SERVER) {
     override fun getName(): String {
         return "get"
     }

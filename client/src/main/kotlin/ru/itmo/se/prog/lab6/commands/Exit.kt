@@ -1,5 +1,9 @@
 package ru.itmo.se.prog.lab6.commands
 
+
+import ru.itmo.se.prog.lab6.data.types.ArgType
+import ru.itmo.se.prog.lab6.data.types.LocationType
+import ru.itmo.se.prog.lab6.data.types.StatusType
 import kotlin.system.exitProcess
 
 /**
@@ -10,7 +14,7 @@ import kotlin.system.exitProcess
  */
 
 @Suppress("UNREACHABLE_CODE")
-class Exit: Command() {
+class Exit: Command(ArgType.NO_ARG, StatusType.USER, LocationType.CLIENT) {
     override fun getName(): String {
         return "exit"
     }

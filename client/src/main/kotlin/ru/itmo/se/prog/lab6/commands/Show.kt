@@ -1,12 +1,17 @@
 package ru.itmo.se.prog.lab6.commands
 
+
+import ru.itmo.se.prog.lab6.data.types.ArgType
+import ru.itmo.se.prog.lab6.data.types.LocationType
+import ru.itmo.se.prog.lab6.data.types.StatusType
+
 /**
  * Outputs "id-name" pairs of items in the collection.
  *
  * @author svinoczar
  * @since 1.0.0
  */
-class Show: Command() {
+class Show: Command(ArgType.NO_ARG, StatusType.USER, LocationType.SERVER) {
     override fun getName(): String {
         return "show"
     }

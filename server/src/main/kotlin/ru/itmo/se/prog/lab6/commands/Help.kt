@@ -1,12 +1,17 @@
 package ru.itmo.se.prog.lab6.commands
 
+
+import ru.itmo.se.prog.lab6.data.types.ArgType
+import ru.itmo.se.prog.lab6.data.types.LocationType
+import ru.itmo.se.prog.lab6.data.types.StatusType
+
 /**
  * Outputs all commands and their descriptions.
  *
  * @author svinoczar
  * @since 1.0.0
  */
-class Help: Command() {
+class Help: Command(ArgType.NO_ARG, StatusType.USER, LocationType.CLIENT) {
     override fun getName(): String {
         return "help"
     }

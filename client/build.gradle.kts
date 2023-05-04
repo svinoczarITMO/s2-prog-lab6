@@ -12,6 +12,7 @@ group = "ru.itmo.se.prog.lab6"
 version = "1.0-SNAPSHOT"
 
 dependencies {
+    implementation(project(mapOf("path" to ":common")))
     val kotlinVersion = "1.8.10"
     val koinVersion = "3.2.2"
     testImplementation(kotlin("test"))

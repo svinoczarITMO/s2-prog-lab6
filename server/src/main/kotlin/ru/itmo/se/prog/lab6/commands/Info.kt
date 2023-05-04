@@ -1,7 +1,10 @@
 package ru.itmo.se.prog.lab6.commands
 
+
+import ru.itmo.se.prog.lab6.data.types.ArgType
+import ru.itmo.se.prog.lab6.data.types.LocationType
+import ru.itmo.se.prog.lab6.data.types.StatusType
 import ru.itmo.se.prog.lab6.utils.Logger
-import java.io.PrintWriter
 
 /**
  * Outputs information about the collection.
@@ -9,7 +12,7 @@ import java.io.PrintWriter
  * @author svinoczar
  * @since 1.0.0
  */
-class Info: Command() {
+class Info: Command(ArgType.NO_ARG, StatusType.USER, LocationType.SERVER) {
     private val logger = Logger()
     override fun getName(): String {
         return "info"

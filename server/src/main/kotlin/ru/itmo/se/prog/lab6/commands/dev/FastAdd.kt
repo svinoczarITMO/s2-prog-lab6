@@ -1,7 +1,11 @@
 package ru.itmo.se.prog.lab6.commands.dev
 
+
 import ru.itmo.se.prog.lab6.commands.Command
 import ru.itmo.se.prog.lab6.data.*
+import ru.itmo.se.prog.lab6.data.types.ArgType
+import ru.itmo.se.prog.lab6.data.types.LocationType
+import ru.itmo.se.prog.lab6.data.types.StatusType
 
 /**
  * Adds new element to the collection with no input arguments.
@@ -9,7 +13,7 @@ import ru.itmo.se.prog.lab6.data.*
  * @author svinoczar
  * @since 1.0.0
  */
-class FastAdd: Command() {
+class FastAdd: Command(ArgType.NO_ARG, StatusType.ADMIN, LocationType.SERVER) {
     override fun getName(): String {
         return "fadd"
     }

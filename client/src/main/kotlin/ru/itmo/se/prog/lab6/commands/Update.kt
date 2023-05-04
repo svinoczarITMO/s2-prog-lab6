@@ -1,9 +1,13 @@
 package ru.itmo.se.prog.lab6.commands
 
+
 import ru.itmo.se.prog.lab6.data.Coordinates
 import ru.itmo.se.prog.lab6.data.Location
 import org.jetbrains.kotlin.konan.file.File
 import ru.itmo.se.prog.lab6.data.Person
+import ru.itmo.se.prog.lab6.data.types.ArgType
+import ru.itmo.se.prog.lab6.data.types.LocationType
+import ru.itmo.se.prog.lab6.data.types.StatusType
 import ru.itmo.se.prog.lab6.utils.AddPersonFields
 import ru.itmo.se.prog.lab6.utils.PrinterManager
 import java.util.*
@@ -14,7 +18,7 @@ import java.util.*
  * @author svinoczar
  * @since 1.0.0
  */
-class Update: Command() {
+class Update: Command(ArgType.OBJECT_PLUS, StatusType.USER, LocationType.SERVER) {
     private val set = AddPersonFields()
     private val writeToConsole = PrinterManager()
     override fun getName(): String {

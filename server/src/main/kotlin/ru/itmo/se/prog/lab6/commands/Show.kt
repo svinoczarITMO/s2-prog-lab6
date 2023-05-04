@@ -1,12 +1,17 @@
 package ru.itmo.se.prog.lab6.commands
 
+
+import ru.itmo.se.prog.lab6.data.types.ArgType
+import ru.itmo.se.prog.lab6.data.types.LocationType
+import ru.itmo.se.prog.lab6.data.types.StatusType
+
 /**
  * Outputs "id-name" pairs of items in the collection.
  *
  * @author svinoczar
  * @since 1.0.0
  */
-class Show: Command() {
+class Show: Command(ArgType.NO_ARG, StatusType.USER, LocationType.SERVER) {
     override fun getName(): String {
         return "show"
     }
@@ -17,7 +22,6 @@ class Show: Command() {
 
     override fun execute(args: Map<String, Any?>): String? {
         var result: String? = ""
-        println(collectionManager.collection.size)
         if (collectionManager.collection.size > 1) {
             for (i in 0 until collectionManager.collection.size-1) {
                 result += ("Id: ${collectionManager.collection.elementAt(i).id}, Name: ${collectionManager.collection.elementAt(i).name}\n")

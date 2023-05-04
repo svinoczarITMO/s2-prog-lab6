@@ -1,12 +1,17 @@
 package ru.itmo.se.prog.lab6.commands
 
+
+import ru.itmo.se.prog.lab6.data.types.ArgType
+import ru.itmo.se.prog.lab6.data.types.LocationType
+import ru.itmo.se.prog.lab6.data.types.StatusType
+
 /**
  * Changes the collection type.
  *
  * @author svinoczar
  * @since 1.0.0
  */
-class ChangeCollection: Command() {
+class ChangeCollection: Command(ArgType.ONE_ARG, StatusType.USER, LocationType.SERVER) {
     override fun getName(): String {
         return "change_collection"
     }

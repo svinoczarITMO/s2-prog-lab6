@@ -4,6 +4,9 @@ package ru.itmo.se.prog.lab6.commands
 import ru.itmo.se.prog.lab6.data.Messages
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
+import ru.itmo.se.prog.lab6.data.types.ArgType
+import ru.itmo.se.prog.lab6.data.types.LocationType
+import ru.itmo.se.prog.lab6.data.types.StatusType
 import ru.itmo.se.prog.lab6.utils.*
 
 /**
@@ -12,7 +15,7 @@ import ru.itmo.se.prog.lab6.utils.*
  * @author svinoczar
  * @since 1.0.0
  */
-abstract class Command: KoinComponent {
+abstract class Command (arg: ArgType, status: StatusType, location: LocationType) : KoinComponent {
     val collectionManager: CollectionManager by inject()
     val commandManager: CommandManager by inject()
     val write: PrinterManager by inject()

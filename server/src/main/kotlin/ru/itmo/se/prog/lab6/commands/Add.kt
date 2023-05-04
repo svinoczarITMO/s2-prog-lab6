@@ -4,6 +4,9 @@ import ru.itmo.se.prog.lab6.data.Coordinates
 import ru.itmo.se.prog.lab6.data.Location
 import ru.itmo.se.prog.lab6.data.Person
 import org.jetbrains.kotlin.konan.file.File
+import ru.itmo.se.prog.lab6.data.types.ArgType
+import ru.itmo.se.prog.lab6.data.types.LocationType
+import ru.itmo.se.prog.lab6.data.types.StatusType
 import ru.itmo.se.prog.lab6.utils.AddPersonFields
 import java.util.*
 
@@ -13,7 +16,7 @@ import java.util.*
  * @author svinoczar
  * @since 1.0.0
  */
-class Add: Command() {
+class Add: ru.itmo.se.prog.lab6.commands.Command(ArgType.OBJECT, StatusType.USER, LocationType.SERVER) {
     private val set = AddPersonFields()
 
     override fun getName(): String {
@@ -32,7 +35,7 @@ class Add: Command() {
                                          "null parameter", "null parameter", "null parameter", "null parameter", "null parameter")
         var result: String? = ""
 
-        if (flag != "ru.itmo.se.prog.lab6.main") {
+        if (flag != "main") {
             params = parametersParser(path)
         }
 
