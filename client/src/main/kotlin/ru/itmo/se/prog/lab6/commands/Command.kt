@@ -15,7 +15,11 @@ import ru.itmo.se.prog.lab6.utils.*
  * @author svinoczar
  * @since 1.0.0
  */
-abstract class Command (arg: ArgType, status: StatusType, location: LocationType) : KoinComponent {
+abstract class Command (
+    val arg: ArgType,
+    val status: StatusType,
+    val location: LocationType) : KoinComponent {
+
     val collectionManager: CollectionManager by inject()
     val commandManager: CommandManager by inject()
     val write: PrinterManager by inject()

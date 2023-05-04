@@ -1,7 +1,10 @@
 import org.koin.core.context.GlobalContext.startKoin
 import ru.itmo.se.prog.lab6.ClientApp
+import ru.itmo.se.prog.lab6.data.Messages
 import ru.itmo.se.prog.lab6.di.notKoinModule
 import ru.itmo.se.prog.lab6.utils.*
+import ru.itmo.se.prog.lab6.utils.validation.ClientValidator
+import java.io.File
 
 fun main() {
     startKoin {
@@ -9,11 +12,13 @@ fun main() {
     }
     val commandManager = CommandManager()
     val validator = Validator()
+    val clientValidator = ClientValidator()
     val write = PrinterManager()
     val read = ReaderManager()
+    val message = Messages()
     val serializer = Serializer()
     val clientApp = ClientApp()
-
+    val commandPackage = "ru.itmo.se.prog.lab6.commands"
     val kotlinIsBetterThanJava = true
 
     // Создание сокетного подключения к серверу
@@ -24,9 +29,13 @@ fun main() {
         write.inConsole("> ")
         val readFromConsole = (readln().lowercase()).split(" ").toMutableList()
         readFromConsole.add(flag)
-        if (commandManager.getCommand("ru.itmo.se.prog.lab6.commands", readFromConsole[0], "Command") != null) {
-            val message = serializer.serializeList(readFromConsole)
-            clientApp.request(message)
+        if (commandManager.getCommand(commandPackage, readFromConsole[0], "Command") != null) {
+            val data = clientValidator.validate(readFromConsole)
+//            clientApp.request(data)
+            val dataStr = serializer.serializeData(data)
+            File("example.json").writeText(dataStr)
+        } else {
+            write.linesInConsole(message.getMessage("weird_command"))
         }
     }
 }

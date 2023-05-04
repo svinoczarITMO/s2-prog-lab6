@@ -19,8 +19,6 @@ dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter:5.9.2")
     implementation("org.jetbrains.kotlin:kotlin-reflect:1.8.10")
     implementation("org.reflections:reflections:0.10.2")
-    implementation(kotlin("serialization", version = kotlinVersion))
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.0-RC")
     implementation("io.insert-koin:koin-core:$koinVersion")
     implementation ("ch.qos.logback:logback-classic:1.2.9")
     implementation("ch.qos.logback:logback-classic:1.2.9")

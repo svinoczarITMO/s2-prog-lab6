@@ -2,7 +2,6 @@ package ru.itmo.se.prog.lab6.data
 
 import kotlinx.serialization.Contextual
 import kotlinx.serialization.Serializable
-import ru.itmo.se.prog.lab6.utils.DateAsStringSerializer
 import java.util.*
 
 /**
@@ -15,13 +14,10 @@ import java.util.*
  * @since 1.0.0
  */
 
-@Serializable
 data class Person(
     var id: Int,
     var name: String,
     var coordinates: Coordinates,
-    @Contextual
-    @Serializable(DateAsStringSerializer::class)
     var creationDate: Date,
     var height: Int,
     var weight: Long,

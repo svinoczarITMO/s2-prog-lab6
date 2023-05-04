@@ -1,7 +1,7 @@
 package ru.itmo.se.prog.lab6.utils
 
-import ru.itmo.se.prog.lab6.data.Person
 import kotlinx.serialization.Serializable
+import ru.itmo.se.prog.lab6.data.Person
 import java.text.SimpleDateFormat
 import java.util.*
 

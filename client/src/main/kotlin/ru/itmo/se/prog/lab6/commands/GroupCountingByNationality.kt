@@ -2,7 +2,6 @@ package ru.itmo.se.prog.lab6.commands
 
 
 import ru.itmo.se.prog.lab6.data.Country
-import ru.itmo.se.prog.lab6.commands.Command
 import ru.itmo.se.prog.lab6.data.Person
 import ru.itmo.se.prog.lab6.data.types.ArgType
 import ru.itmo.se.prog.lab6.data.types.LocationType
