@@ -1,14 +1,15 @@
 package ru.itmo.se.prog.lab6.utils.validation
 
+import org.jetbrains.kotlin.konan.file.File
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
-import org.koin.java.KoinJavaComponent.inject
 import ru.itmo.se.prog.lab6.data.*
 import ru.itmo.se.prog.lab6.data.types.ArgType
 import ru.itmo.se.prog.lab6.data.types.LocationType
 import ru.itmo.se.prog.lab6.data.types.StatusType
 import ru.itmo.se.prog.lab6.utils.AddPersonFields
 import ru.itmo.se.prog.lab6.utils.CommandManager
+import ru.itmo.se.prog.lab6.utils.PrinterManager
 import java.util.Date
 
 class ClientValidator: KoinComponent {
@@ -16,22 +17,23 @@ class ClientValidator: KoinComponent {
     private val message: Messages by inject()
     private val commandPackage = "ru.itmo.se.prog.lab6.commands"
     private val addPersonFields = AddPersonFields()
+    private val write: PrinterManager by inject()
     private var params = arrayListOf("null parameter", "null parameter", "null parameter", "null parameter", "null parameter",
         "null parameter", "null parameter", "null parameter", "null parameter", "null parameter")
-    private val dataObj = Data("command", mutableListOf("none"), Person(
-        0,"Nikita", Coordinates(1.4f, 8.8f), Date(),180, 68,
-                Color.YELLOW, Country.VATICAN, Location(1,2,3)),
+    private val dataObj = Data("command", mutableListOf("none"),
+        Person(0,"Nikita", Coordinates(1.4f, 8.8f), Date(),180, 68, Color.YELLOW, Country.VATICAN, Location(1,2,3)),
         "main", ArgType.NO_ARG, StatusType.USER, LocationType.CLIENT)
 
-    fun validate (data: MutableList<String>): Data {
+    fun validate (data: MutableList<String>): ArrayList<Data> {
         val commandName = data[0]
         val oneArg = data[1]
-        val placeFlag = data[-1]
+        val placeFlag = data.last()
         val command = commandManager.getCommand(commandPackage, commandName, "Command")
         var isExecuteScript = false
+        val dataQueue = arrayListOf<Data>()
 
         dataObj.name = commandName
-        dataObj.placeFlag = oneArg
+        dataObj.placeFlag = placeFlag
         dataObj.argType = command?.arg!!
         dataObj.statusType = command.status
         dataObj.locationType = command.location
@@ -40,22 +42,39 @@ class ClientValidator: KoinComponent {
             isExecuteScript = true
         }
 
-        when (command.arg) {
-            ArgType.NO_ARG -> {
-                dataObj.args = mutableListOf(null)
+        if (!isExecuteScript) {
+            when (command.arg) {
+                ArgType.NO_ARG -> {
+                    dataObj.args = mutableListOf(null)
+                }
+
+                ArgType.ONE_ARG -> {
+                    dataObj.args = mutableListOf(oneArg)
+                }
+
+                ArgType.OBJECT -> {
+                    val obj = makeAnObject(placeFlag)
+                }
+
+                ArgType.OBJECT_PLUS -> {
+                    val obj = makeAnObject(placeFlag)
+                    dataObj.args = mutableListOf(oneArg)
+                }
             }
-            ArgType.ONE_ARG -> {
-                dataObj.args = mutableListOf(oneArg)
-            }
-            ArgType.OBJECT -> {
-                val obj = makeAnObject(placeFlag)
-            }
-            ArgType.OBJECT_PLUS -> {
-                val obj = makeAnObject(placeFlag)
-                dataObj.args = mutableListOf(oneArg)
+            dataQueue.add(dataObj)
+        } else {
+            //НЕ РАБОТАЕТ С ADD и UPDATE
+            val commandsQueue = preValidation(oneArg)
+            if (commandsQueue.contains(arrayOf("ERROR"))) {
+                write.linesInConsole(message.getMessage("recursion"))
+            } else {
+                for (element in commandsQueue) {
+                    val tmp = validate(element.toMutableList())
+                    tmp.forEach{dataQueue.add(it)}
+                }
             }
         }
-        return dataObj
+        return dataQueue
     }
 
     private fun makeAnObject (placeFlag: String): Person {
@@ -75,5 +94,42 @@ class ClientValidator: KoinComponent {
                 addPersonFields.locationZ(params[9], placeFlag)
             )
         )
+    }
+
+    private fun preValidation (path: String): ArrayList<Array<String>> {
+        val commands = arrayListOf<Array<String>>()
+        val errorArray = arrayListOf<Array<String>>(arrayOf("ERROR"))
+        val strings = File(path).readStrings()
+        val params = arrayListOf<String>()
+
+        if (strings.isNotEmpty()) {
+            for (index in 0 until strings.size) {
+                val arr = arrayListOf<String>()
+                val currentLine = strings[index].split(" ")
+                val currentCommand = commandManager.getCommand(commandPackage, currentLine[0], "Command")
+                if (currentCommand != null) {
+                    if (currentLine[0] == "execute_script" && currentLine.last() == path) {
+                        return errorArray
+                    }
+                    if (currentCommand.arg == ArgType.OBJECT || currentCommand.arg == ArgType.OBJECT_PLUS) {
+                        for (n in 1..10) {
+                            val param = strings.getOrElse(index + n) { "" }.trim().lowercase()
+                            if (param.isNotEmpty()) {
+                                params[n - 1] = param
+                            }
+                        }
+                        //команда, список полей
+                        currentLine.forEach { arr.add(it) }
+                        params.forEach { arr.add(it) }
+                        commands.add(arr.toTypedArray())
+                    } else {
+                        //команда, список аргументов
+                        currentLine.forEach { arr.add(it) }
+                        commands.add(arr.toTypedArray())
+                    }
+                }
+            }
+        }
+        return commands
     }
 }

@@ -20,32 +20,34 @@ import java.util.*
  * @since 1.0.0
  */
 class Serializer {
+    private val json = Json { prettyPrint = true }
+
     /**
      * Serializes the list of Person objects.
      */
     fun serializeCollection(whatToSerialize: List<Person>): String {
-        return Json.encodeToString(whatToSerialize)
+        return json.encodeToString(whatToSerialize)
     }
 
     /**
      * Deserializes the list of Person objects.
      */
     fun deserializeCollection(whatToDeserialize: String): List<Person> {
-        return Json.decodeFromString<List<Person>>(whatToDeserialize)
+        return json.decodeFromString<List<Person>>(whatToDeserialize)
     }
 
     /**
      *
      */
     fun serializeList(whatToSerialize: MutableList<String>): String {
-        return Json.encodeToString(whatToSerialize)
+        return json.encodeToString(whatToSerialize)
     }
 
     /**
      *
      */
     fun deserializeList(whatToDeserialize: String): List<String> {
-        return Json.decodeFromString<List<String>>(whatToDeserialize)
+        return json.decodeFromString<List<String>>(whatToDeserialize)
     }
 }
 

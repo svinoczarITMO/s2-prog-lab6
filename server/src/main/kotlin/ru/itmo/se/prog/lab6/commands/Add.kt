@@ -1,9 +1,9 @@
 package ru.itmo.se.prog.lab6.commands
 
 import ru.itmo.se.prog.lab6.data.Coordinates
+import org.jetbrains.kotlin.konan.file.File
 import ru.itmo.se.prog.lab6.data.Location
 import ru.itmo.se.prog.lab6.data.Person
-import org.jetbrains.kotlin.konan.file.File
 import ru.itmo.se.prog.lab6.data.types.ArgType
 import ru.itmo.se.prog.lab6.data.types.LocationType
 import ru.itmo.se.prog.lab6.data.types.StatusType
