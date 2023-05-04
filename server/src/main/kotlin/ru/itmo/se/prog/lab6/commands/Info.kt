@@ -5,6 +5,7 @@ import ru.itmo.se.prog.lab6.data.types.ArgType
 import ru.itmo.se.prog.lab6.data.types.LocationType
 import ru.itmo.se.prog.lab6.data.types.StatusType
 import ru.itmo.se.prog.lab6.utils.Logger
+import ru.itmo.se.prog.lab6.utils.validation.Data
 
 /**
  * Outputs information about the collection.
@@ -23,7 +24,7 @@ class Info: Command(ArgType.NO_ARG, StatusType.USER, LocationType.SERVER) {
                 "(тип, дата инициализации, количество элементов и т.д.)\n"
     }
 
-    override fun execute(args: Map<String, Any?>): String? {
+    override fun execute(data: Data): String? {
         var result: String? = ""
         val type = collectionManager.getType() //Работает некорректно с пустой коллекций (Выводит "Тип: ArrayList")
         val size = collectionManager.collection.size

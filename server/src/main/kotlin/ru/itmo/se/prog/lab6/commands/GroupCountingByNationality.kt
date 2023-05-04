@@ -2,11 +2,11 @@ package ru.itmo.se.prog.lab6.commands
 
 
 import ru.itmo.se.prog.lab6.data.Country
-import ru.itmo.se.prog.lab6.commands.Command
 import ru.itmo.se.prog.lab6.data.Person
 import ru.itmo.se.prog.lab6.data.types.ArgType
 import ru.itmo.se.prog.lab6.data.types.LocationType
 import ru.itmo.se.prog.lab6.data.types.StatusType
+import ru.itmo.se.prog.lab6.utils.validation.Data
 import java.util.*
 
 /**
@@ -25,7 +25,7 @@ class GroupCountingByNationality: Command(ArgType.NO_ARG, StatusType.USER, Locat
                 "выводит количество элементов в каждой группе\n"
     }
 
-    override fun execute(args: Map<String, Any?>): String? {
+    override fun execute(data: Data): String? {
         var result: String? = ""
         val bufferVector = Vector<Person>()
         var counter = 0

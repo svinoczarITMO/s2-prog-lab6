@@ -4,6 +4,8 @@ package ru.itmo.se.prog.lab6.commands
 import ru.itmo.se.prog.lab6.data.types.ArgType
 import ru.itmo.se.prog.lab6.data.types.LocationType
 import ru.itmo.se.prog.lab6.data.types.StatusType
+import ru.itmo.se.prog.lab6.utils.validation.Data
+import java.io.File
 import java.util.*
 
 /**
@@ -21,9 +23,9 @@ class History: Command(ArgType.NO_ARG, StatusType.USER, LocationType.SERVER) {
         return getName() + " - выводит последние 7 команд (без их аргумента)\n"
     }
 
-    override fun execute(args: Map<String, Any?>): String? {
+    override fun execute(data: Data): String? {
+        val buffer = File("\\server\\src\\main\\kotlin\\ru\\itmo\\se\\prog\\lab6\\data\\history.log").readLines().toMutableList()
         var result: String? = ""
-        val buffer: LinkedList<String> by args
         result = (message.getMessage("last_commands"))
         for (command in buffer) {
             result += (command) + "\n"

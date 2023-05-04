@@ -8,6 +8,7 @@ import ru.itmo.se.prog.lab6.data.types.ArgType
 import ru.itmo.se.prog.lab6.data.types.LocationType
 import ru.itmo.se.prog.lab6.data.types.StatusType
 import ru.itmo.se.prog.lab6.utils.*
+import ru.itmo.se.prog.lab6.utils.validation.Data
 
 /**
  * A basic interface for implementing commands. You must implement it before applying a command in the CommandManager.
@@ -39,6 +40,6 @@ abstract class Command (arg: ArgType, status: StatusType, location: LocationType
      *
      * @param args map of command's arguments.
      */
-    abstract fun execute(args: Map<String, Any?>): String?
+    abstract fun execute(data: Data): String?
 }
 

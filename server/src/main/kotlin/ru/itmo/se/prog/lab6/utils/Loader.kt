@@ -1,8 +1,8 @@
 package ru.itmo.se.prog.lab6.utils
 
-import ru.itmo.se.prog.lab6.data.Person
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
+import ru.itmo.se.prog.lab6.data.Person
 import java.io.File
 
 /**

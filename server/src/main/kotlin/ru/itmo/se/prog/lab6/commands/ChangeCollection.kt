@@ -4,6 +4,7 @@ package ru.itmo.se.prog.lab6.commands
 import ru.itmo.se.prog.lab6.data.types.ArgType
 import ru.itmo.se.prog.lab6.data.types.LocationType
 import ru.itmo.se.prog.lab6.data.types.StatusType
+import ru.itmo.se.prog.lab6.utils.validation.Data
 
 /**
  * Changes the collection type.
@@ -20,8 +21,8 @@ class ChangeCollection: Command(ArgType.ONE_ARG, StatusType.USER, LocationType.S
         return getName() + " - изменяет тип коллекции.)\n"
     }
 
-    override fun execute(args: Map<String, Any?>): String? {
-        val type: String by args
+    override fun execute(data: Data): String? {
+        val type = data.oneArg
         var result: String? = ""
         try {
             collectionManager.changeType(type.toString())

@@ -9,7 +9,7 @@ import ru.itmo.se.prog.lab6.data.types.StatusType
 @Serializable
 data class Data(
     var name: String,
-    var args: MutableList<String?>,
+    var oneArg: String,
     var obj: Person,
     var placeFlag: String,
     var argType: ArgType,

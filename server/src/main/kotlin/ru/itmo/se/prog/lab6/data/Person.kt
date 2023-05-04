@@ -27,4 +27,4 @@ data class Person(
     var hairColor: Color,
     var nationality: Country,
     var location: Location
-) {}
+)

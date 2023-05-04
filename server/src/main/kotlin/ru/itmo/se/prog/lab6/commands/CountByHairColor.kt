@@ -1,8 +1,10 @@
 package ru.itmo.se.prog.lab6.commands
 
+import ru.itmo.se.prog.lab6.data.Color
 import ru.itmo.se.prog.lab6.data.types.ArgType
 import ru.itmo.se.prog.lab6.data.types.LocationType
 import ru.itmo.se.prog.lab6.data.types.StatusType
+import ru.itmo.se.prog.lab6.utils.validation.Data
 
 /**
  * Counts elements by hair color.
@@ -19,8 +21,8 @@ class CountByHairColor: Command(ArgType.ONE_ARG, StatusType.USER, LocationType.S
         return getName() + " --hairColor - выводит количество элементов, значение поля hairColor которых равно заданному\n"
     }
 
-    override fun execute(args: Map<String, Any?>): String? {
-        val color by args
+    override fun execute(data: Data): String? {
+        val color = Color.valueOf(data.oneArg)
         val copyVector = collectionManager.collection
         var counter = 0
         var result: String? = ""
