@@ -30,10 +30,13 @@ fun main() {
         val readFromConsole = (readln().lowercase()).split(" ").toMutableList()
         readFromConsole.add(flag)
         if (commandManager.getCommand(commandPackage, readFromConsole[0], "Command") != null) {
-            val data = clientValidator.validate(readFromConsole)
-//            clientApp.request(data)
-            val dataStr = serializer.serializeData(data)
-            File("example.json").writeText(dataStr)
+            println(readFromConsole)
+            val queue = clientValidator.validate(readFromConsole)
+            for (data in queue) {
+                val dataStr = serializer.serializeData(data)
+                clientApp.request(dataStr)
+            }
+//            File("example.json").writeText(dataStr)
         } else {
             write.linesInConsole(message.getMessage("weird_command"))
         }
