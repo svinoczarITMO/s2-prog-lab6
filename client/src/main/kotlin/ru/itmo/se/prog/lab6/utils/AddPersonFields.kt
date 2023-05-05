@@ -32,6 +32,7 @@ class AddPersonFields: KoinComponent {
 
         try {
             if (name.isBlank()) throw ElementAmountException()
+            println(name)
             return name
         } catch (e: ElementAmountException) {
             write.linesInConsole("Строка не может быть пустой! Введите имя ещё раз.")

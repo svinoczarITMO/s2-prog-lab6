@@ -5,6 +5,7 @@ import ru.itmo.se.prog.lab6.data.Messages
 import ru.itmo.se.prog.lab6.exceptions.ElementAmountException
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
+import ru.itmo.se.prog.lab6.data.Country
 
 /**
  * Handles inputed data for Person constructor fields.

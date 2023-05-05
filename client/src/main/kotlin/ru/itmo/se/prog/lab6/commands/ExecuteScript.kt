@@ -5,6 +5,7 @@ import org.jetbrains.kotlin.konan.file.File
 import ru.itmo.se.prog.lab6.data.types.ArgType
 import ru.itmo.se.prog.lab6.data.types.LocationType
 import ru.itmo.se.prog.lab6.data.types.StatusType
+import ru.itmo.se.prog.lab6.utils.validation.Data
 
 /**
  * Executes the script according to the file path entered.
@@ -23,18 +24,18 @@ class ExecuteScript: Command(ArgType.ONE_ARG, StatusType.USER, LocationType.SERV
         return getName() + " --file_name - считывает и исполняет скрипт из указанного файла\n"
     }
 
-    override fun execute(args: Map<String, Any?>): String? {
+    override fun execute(data: Data): String? {
         var result: String? = ""
         // глубина рекурсии
         val maxDepth = 8
-        val depth: Int by args
+        val depth = 0
         var actDepth = depth
         val flag = ::execute.name
-        val path: String by args
+        val path = data.oneArg
         var arguments: ArrayList<Any?> = arrayListOf()
         if (File(path).exists) {
             scriptFile = File(path)
-            validator.explorer(path)
+//            validator.explorer(path)
         } else {
             result = message.getMessage("NoSuchFile")
             return result
@@ -51,11 +52,11 @@ class ExecuteScript: Command(ArgType.ONE_ARG, StatusType.USER, LocationType.SERV
                         newArgs.add(flag)
                         newArgs.add(path)
                         newArgs.add(actDepth.toString())
-                        validator.validate(newArgs.toTypedArray())
+//                        validator.validate(newArgs.toTypedArray())
                     } else {
                         newArgs.add(flag)
                         newArgs.add(path)
-                        validator.validate(newArgs.toTypedArray())
+//                        validator.validate(newArgs.toTypedArray())
                     }
                 }
             } else {

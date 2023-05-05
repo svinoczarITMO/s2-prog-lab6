@@ -6,6 +6,7 @@ import ru.itmo.se.prog.lab6.data.Person
 import ru.itmo.se.prog.lab6.data.types.ArgType
 import ru.itmo.se.prog.lab6.data.types.LocationType
 import ru.itmo.se.prog.lab6.data.types.StatusType
+import ru.itmo.se.prog.lab6.utils.validation.Data
 
 /**
  * Gets the collection item by its identifier.
@@ -25,10 +26,10 @@ class GetElement: Command(ArgType.ONE_ARG, StatusType.ADMIN, LocationType.SERVER
      *
      * @param Int id of getting element.
      */
-    override fun execute(args: Map<String, Any?>): String? {
+    override fun execute(data: Data): String? {
         var result: String? = ""
         var obj: Person? = null
-        val id: Int by args
+        val id = data.oneArg.toInt()
         try {
             for (element in collectionManager.collection) {
                 if (element.id == id) {

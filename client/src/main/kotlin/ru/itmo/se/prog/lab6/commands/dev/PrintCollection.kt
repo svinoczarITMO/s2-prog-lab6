@@ -5,6 +5,7 @@ import ru.itmo.se.prog.lab6.commands.Command
 import ru.itmo.se.prog.lab6.data.types.ArgType
 import ru.itmo.se.prog.lab6.data.types.LocationType
 import ru.itmo.se.prog.lab6.data.types.StatusType
+import ru.itmo.se.prog.lab6.utils.validation.Data
 
 /**
  * Outputs all items in the collection as units.
@@ -20,7 +21,7 @@ class PrintCollection: Command(ArgType.NO_ARG, StatusType.ADMIN, LocationType.SE
     override fun getDescription(): String {
         return getName() + " - выводит в терминал все объекты коллекции в развернутом виде\n"
     }
-    override fun execute(args: Map<String, Any?>): String {
+    override fun execute(data: Data): String {
         val result = (collectionManager.collection.toString())
         return result
     }

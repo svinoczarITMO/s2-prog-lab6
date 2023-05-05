@@ -1,6 +1,10 @@
+import kotlinx.serialization.encodeToString
+import kotlinx.serialization.json.Json
 import org.koin.core.context.GlobalContext.startKoin
 import ru.itmo.se.prog.lab6.ClientApp
 import ru.itmo.se.prog.lab6.data.Messages
+import ru.itmo.se.prog.lab6.data.types.LocationType
+import ru.itmo.se.prog.lab6.data.types.StatusType
 import ru.itmo.se.prog.lab6.di.notKoinModule
 import ru.itmo.se.prog.lab6.utils.*
 import ru.itmo.se.prog.lab6.utils.validation.ClientValidator
@@ -11,7 +15,6 @@ fun main() {
         modules(notKoinModule)
     }
     val commandManager = CommandManager()
-    val validator = Validator()
     val clientValidator = ClientValidator()
     val write = PrinterManager()
     val read = ReaderManager()
@@ -21,22 +24,20 @@ fun main() {
     val commandPackage = "ru.itmo.se.prog.lab6.commands"
     val kotlinIsBetterThanJava = true
 
-    // Создание сокетного подключения к серверу
-    while (kotlinIsBetterThanJava) {
-        val flag = ::main.name // Получение потоков ввода и вывода для обмена данными с сервером
 
-        // Отправка сообщения на сервер
+    while (kotlinIsBetterThanJava) {
+        val flag = ::main.name
         write.inConsole("> ")
         val readFromConsole = (readln().lowercase()).split(" ").toMutableList()
         readFromConsole.add(flag)
-        if (commandManager.getCommand(commandPackage, readFromConsole[0], "Command") != null) {
-            println(readFromConsole)
+        val command = commandManager.getCommand(commandPackage, readFromConsole[0], "Command")
+        if (command != null && command.status == StatusType.USER) {
             val queue = clientValidator.validate(readFromConsole)
             for (data in queue) {
-                val dataStr = serializer.serializeData(data)
+                val dataStr = Json.encodeToString(data)
+                File("example.json").writeText(dataStr)
                 clientApp.request(dataStr)
             }
-//            File("example.json").writeText(dataStr)
         } else {
             write.linesInConsole(message.getMessage("weird_command"))
         }

@@ -3,6 +3,7 @@ package ru.itmo.se.prog.lab6
 import org.koin.core.component.KoinComponent
 import ru.itmo.se.prog.lab6.utils.PrinterManager
 import ru.itmo.se.prog.lab6.utils.Serializer
+import ru.itmo.se.prog.lab6.utils.validation.Data
 import java.io.*
 import java.net.InetSocketAddress
 import java.nio.channels.SocketChannel
@@ -35,14 +36,14 @@ class ClientApp (): KoinComponent {
                 output.write(obj)
                 output.flush()
                 clientSocket.shutdownOutput()
-                response(clientSocket, obj)
+                response(clientSocket)
             }
         } catch (e: Exception) {
             println("Ошибка запроса.")
         }
     }
 
-    fun response(clientSocket: SocketChannel, obj: String) {
+    fun response(clientSocket: SocketChannel) {
         try {
             val input: InputStream = clientSocket.socket().getInputStream()
             val bufferedReader = BufferedReader(InputStreamReader(input))

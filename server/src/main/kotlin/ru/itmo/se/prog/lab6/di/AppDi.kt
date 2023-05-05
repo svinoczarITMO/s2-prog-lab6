@@ -23,9 +23,9 @@ val notKoinModule = module {
         Messages()
     }
 
-    single {
-        Validator()
-    }
+//    single {
+//        Validator()
+//    }
 
     single {
         CommandManager()

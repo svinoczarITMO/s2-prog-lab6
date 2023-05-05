@@ -24,13 +24,14 @@ class History: Command(ArgType.NO_ARG, StatusType.USER, LocationType.SERVER) {
     }
 
     override fun execute(data: Data): String? {
-        val buffer = File("\\server\\src\\main\\kotlin\\ru\\itmo\\se\\prog\\lab6\\data\\history.log").readLines().toMutableList()
+        val buffer = File("D:\\ITMO\\2nd-semester\\prog-labs\\s2-prog-lab6\\server\\src\\main\\kotlin\\ru\\itmo\\se\\prog\\lab6\\data\\history.log").readText().split(", ")
         var result: String? = ""
+        result += "\n"
         result = (message.getMessage("last_commands"))
         for (command in buffer) {
             result += (command) + "\n"
         }
-        result += "\n"
+        println(result)
         return result
     }
 }

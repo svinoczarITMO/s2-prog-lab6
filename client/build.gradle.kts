@@ -23,8 +23,6 @@ dependencies {
     implementation(kotlin("serialization", version = kotlinVersion))
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.0-RC")
     implementation("io.insert-koin:koin-core:$koinVersion")
-    implementation ("ch.qos.logback:logback-classic:1.2.9")
-    implementation("ch.qos.logback:logback-classic:1.2.9")
     testImplementation ("io.mockk:mockk:1.13.4")
     testImplementation("io.insert-koin:koin-test-junit5:$koinVersion")
     testImplementation("org.jetbrains.kotlin:kotlin-test:$kotlinVersion")

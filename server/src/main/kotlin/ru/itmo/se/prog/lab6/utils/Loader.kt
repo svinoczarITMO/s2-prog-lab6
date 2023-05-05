@@ -20,6 +20,6 @@ class Loader: KoinComponent {
      * Loads collection from json file.
      */
     fun load () {
-        collectionManager.collection = serializer.deserializeCollection(File(pathToFile).readText()) as MutableCollection<Person>
+        collectionManager.collection = serializer.deserializePerson(File(pathToFile).readText()) as MutableCollection<Person>
     }
 }

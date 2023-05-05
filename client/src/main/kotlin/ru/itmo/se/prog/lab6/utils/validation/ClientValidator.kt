@@ -20,7 +20,7 @@ class ClientValidator: KoinComponent {
     private val write: PrinterManager by inject()
     private var params = arrayListOf("null parameter", "null parameter", "null parameter", "null parameter", "null parameter",
         "null parameter", "null parameter", "null parameter", "null parameter", "null parameter")
-    private val dataObj = Data("command", mutableListOf("none"),
+    private val dataObj = Data("command", "none",
         Person(0,"Nikita", Coordinates(1.4f, 8.8f), Date(),180, 68, Color.YELLOW, Country.VATICAN, Location(1,2,3)),
         "main", ArgType.NO_ARG, StatusType.USER, LocationType.CLIENT)
 
@@ -42,39 +42,47 @@ class ClientValidator: KoinComponent {
             isExecuteScript = true
         }
 
-        if (!isExecuteScript) {
-            when (command.arg) {
-                ArgType.NO_ARG -> {
-                    dataObj.args = mutableListOf(null)
-                }
+        if (command.location == LocationType.SERVER) {
+            if (!isExecuteScript) {
+                when (command.arg) {
+                    ArgType.NO_ARG -> {
+                        dataObj.oneArg = ""
+                    }
 
-                ArgType.ONE_ARG -> {
-                    dataObj.args = mutableListOf(oneArg)
-                }
+                    ArgType.ONE_ARG -> {
+                        dataObj.oneArg = oneArg
+                    }
 
-                ArgType.OBJECT -> {
-                    val obj = makeAnObject(placeFlag)
-                }
+                    ArgType.OBJECT -> {
+                        val obj = makeAnObject(placeFlag)
+                        dataObj.obj = obj
+                    }
 
-                ArgType.OBJECT_PLUS -> {
-                    val obj = makeAnObject(placeFlag)
-                    dataObj.args = mutableListOf(oneArg)
+                    ArgType.OBJECT_PLUS -> {
+                        val obj = makeAnObject(placeFlag)
+                        dataObj.obj = obj
+                        dataObj.oneArg = oneArg
+                    }
                 }
-            }
-            dataQueue.add(dataObj)
-        } else {
-            //НЕ РАБОТАЕТ С ADD и UPDATE
-            val commandsQueue = preValidation(oneArg)
-            if (commandsQueue.contains(arrayOf("ERROR"))) {
-                write.linesInConsole(message.getMessage("recursion"))
+                dataQueue.add(dataObj)
             } else {
-                for (element in commandsQueue) {
-                    val tmp = validate(element.toMutableList())
-                    tmp.forEach{dataQueue.add(it)}
+                //НЕ РАБОТАЕТ С ADD и UPDATE
+                val commandsQueue = preValidation(oneArg)
+                if (commandsQueue.contains(arrayOf("ERROR"))) {
+                    write.linesInConsole(message.getMessage("recursion"))
+                } else {
+                    for (element in commandsQueue) {
+                        val tmp = validate(element.toMutableList())
+                        tmp.forEach { dataQueue.add(it) }
+                    }
                 }
             }
+            return dataQueue
+        } else {
+            write.linesInConsole(command.execute(dataObj))
+            dataQueue.add(dataObj)
+            return dataQueue
         }
-        return dataQueue
     }
 
     private fun makeAnObject (placeFlag: String): Person {

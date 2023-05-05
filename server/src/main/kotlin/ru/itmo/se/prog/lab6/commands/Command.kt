@@ -22,7 +22,7 @@ abstract class Command (arg: ArgType, status: StatusType, location: LocationType
     val write: PrinterManager by inject()
     val read: ReaderManager by inject()
     val message: Messages by inject()
-    val validator: Validator by inject()
+//    val validator: Validator by inject()
     val serializer: Serializer by inject()
 
     /**

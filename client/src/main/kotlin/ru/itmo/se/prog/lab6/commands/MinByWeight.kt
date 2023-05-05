@@ -4,6 +4,7 @@ package ru.itmo.se.prog.lab6.commands
 import ru.itmo.se.prog.lab6.data.types.ArgType
 import ru.itmo.se.prog.lab6.data.types.LocationType
 import ru.itmo.se.prog.lab6.data.types.StatusType
+import ru.itmo.se.prog.lab6.utils.validation.Data
 
 /**
  * Outputs the collection item with the minimum weight.
@@ -20,7 +21,7 @@ class MinByWeight: Command(ArgType.NO_ARG, StatusType.USER, LocationType.SERVER)
         return getName() + " - выводит любой объект из коллекции, значение поля weight которого является минимальным\n"
     }
 
-    override fun execute(args: Map<String, Any?>): String? {
+    override fun execute(data: Data): String? {
         var result: String? = ""
         val vector = collectionManager.collection
         var minWeight: Long = Long.MAX_VALUE

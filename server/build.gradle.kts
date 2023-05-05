@@ -16,9 +16,8 @@ repositories {
 }
 
 dependencies {
-    implementation(project(mapOf("path" to ":common")))
-    val kotlinVersion = "1.8.10"
 //    implementation(project(mapOf("path" to ":common")))
+    val kotlinVersion = "1.8.10"
     val koinVersion = "3.2.2"
     testImplementation(kotlin("test"))
     testImplementation("org.junit.jupiter:junit-jupiter:5.9.2")
